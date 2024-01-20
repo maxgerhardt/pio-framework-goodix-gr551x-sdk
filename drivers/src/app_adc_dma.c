@@ -54,7 +54,7 @@ extern void adc_wake_up(void);
 #if (APP_DRIVER_CHIP_TYPE == APP_DRIVER_GR551X)
 static const uint32_t s_io_to_input_src[ADC_INPUT_SRC_REF + 1] =
 {
-    MSIO_PIN_0, MSIO_PIN_1, MSIO_PIN_2, MSIO_PIN_3, MSIO_PIN_4, NULL, NULL, NULL
+    MSIO_PIN_0, MSIO_PIN_1, MSIO_PIN_2, MSIO_PIN_3, MSIO_PIN_4, (uint32_t)NULL, (uint32_t)NULL, (uint32_t)NULL
 };
 #endif
 
@@ -209,7 +209,7 @@ uint16_t app_adc_dma_multi_channel_conversion_async(app_adc_sample_node_t *p_beg
     p_check_node = p_begin_node;
     while (check_node_num)//config all msios
     {
-        if (s_io_to_input_src[p_check_node->channel] != NULL)
+        if (s_io_to_input_src[p_check_node->channel] != (uint32_t) NULL)
         {
             io_init.pin  = s_io_to_input_src[p_check_node->channel];
             app_io_init(APP_IO_TYPE_MSIO, &io_init);
