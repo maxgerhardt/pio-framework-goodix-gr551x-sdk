@@ -138,12 +138,12 @@ __WEAK void hardfault_trace_handler(unsigned int *hardfault_args)
     printf("LR [R14] = %x  subroutine call return address\r\n", stacked_lr);
     printf("PC [R15] = %x  program counter\r\n", stacked_pc);
     printf("PSR = %x\r\n", stacked_psr);
-    printf("BFAR = %x\r\n", (*((volatile unsigned long *)(0xE000ED38))));
-    printf("CFSR = %x\r\n", (*((volatile unsigned long *)(0xE000ED28))));
-    printf("HFSR = %x\r\n", (*((volatile unsigned long *)(0xE000ED2C))));
-    printf("DFSR = %x\r\n", (*((volatile unsigned long *)(0xE000ED30))));
-    printf("AFSR = %x\r\n", (*((volatile unsigned long *)(0xE000ED3C))));
-    printf("SCB_SHCSR = %x\r\n", SCB->SHCSR);
+    printf("BFAR = %x\r\n", (*((volatile unsigned int *)(0xE000ED38))));
+    printf("CFSR = %x\r\n", (*((volatile unsigned int *)(0xE000ED28))));
+    printf("HFSR = %x\r\n", (*((volatile unsigned int *)(0xE000ED2C))));
+    printf("DFSR = %x\r\n", (*((volatile unsigned int *)(0xE000ED30))));
+    printf("AFSR = %x\r\n", (*((volatile unsigned int *)(0xE000ED3C))));
+    printf("SCB_SHCSR = %x\r\n", (unsigned int) SCB->SHCSR);
     printf("================================\r\n");
     app_log_flush();
 
